@@ -23,4 +23,9 @@ class TaskData with ChangeNotifier {
     _tasksList.add(Task(name: newTaskTitle));
     notifyListeners();
   }
+
+  void removeTask(Task task) {
+    _tasksList.remove(task);
+    notifyListeners();
+  }
 }
