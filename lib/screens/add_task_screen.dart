@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  AddTaskScreen({Key? key, required this.addNewTaskCallback}) : super(key: key);
-
-  final ValueChanged<String> addNewTaskCallback;
-
   @override
   Widget build(BuildContext context) {
     late String newTaskTitle = '';
@@ -39,7 +38,7 @@ class AddTaskScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 if (newTaskTitle.isNotEmpty) {
-                  addNewTaskCallback(newTaskTitle);
+                  context.read<TaskData>().addTask(newTaskTitle);
                 }
                 Navigator.pop(context);
               },
